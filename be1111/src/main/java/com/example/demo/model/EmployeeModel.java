@@ -1,75 +1,124 @@
 package com.example.demo.model;
 
-//public class EmployeeModel {
-//}
+import lombok.Data;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-
+@Data
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name="employee")
 public class EmployeeModel implements Serializable {
-    /**
-     *
-     */
-@Getter
-    private static final long serialVersionUID = 1L;
-    private String fullname;
-    private int age;
-    private int sex;
-    private String position;
-    private int moneyperhour;
-    private int team;
-    private String imageURL;
-    private Date Created_At;
-    private String email;
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    public Contact(){
-        id=0;
-    }
-    public Contact(int id,String name, int age, Date dob, String email) {
-        this.id =id;
-        this.fullname =name;
-        this.age =age;
-        this.email =email;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public Date getDob() {
-        return dob;
-    }
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    @Column(name="full_name",nullable = false)
+    private String fullName;
+    @Column(name="age")
+    private int age;
+    @Column(name="gender")
+    private int gender;
+    @Column(name="address")
+    private String address;
+    @Column(name="phone_number")
+    private String phoneNumber;
+    @Column(name="start_day")
+    private Date startDay;
+    @Column(name="money_per_hour")
+    private int moneyPerHour;
+    @Column(name="total_hours")
+    private int totalHours;
+    @Column(name="image_URL")
+    private String imageURL;
+    @Column(name="teamID")
+    private int teamID;
+
     public long getId() {
         return id;
     }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public Date getStartDay() {
+        return startDay;
+    }
+
+    public int getMoneyPerHour() {
+        return moneyPerHour;
+    }
+
+    public int getTotalHours() {
+        return totalHours;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public int getTeamID() {
+        return teamID;
+    }
+
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setStartDay(Date startDay) {
+        this.startDay = startDay;
+    }
+
+    public void setMoneyPerHour(int moneyPerHour) {
+        this.moneyPerHour = moneyPerHour;
+    }
+
+    public void setTotalHours(int totalHours) {
+        this.totalHours = totalHours;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public void setTeamID(int teamID) {
+        this.teamID = teamID;
     }
 }
